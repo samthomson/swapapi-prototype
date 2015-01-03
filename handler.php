@@ -1,13 +1,15 @@
 <?php
 
-	$saSwaps = array("google" => "http://www.google.com", "samt.st" => "http://samt.st");
+	$saSwaps = array("google" => array("target" => "http://www.google.com"), "samt.st" => array("target" => "http://samt.st"));
 
 	$sSwapRequest = trim($_SERVER["REQUEST_URI"], "/" );;
 
-	//print_r($saSwaps);
 
-	if(isset($saSwaps[$sSwapRequest])){
+	if(is_array(($saSwaps[$sSwapRequest]))){
 		//echo "retrieve ".$saSwaps[$sSwapRequest];
-		echo file_get_contents($saSwaps[$sSwapRequest]);
+		$aSwap = $saSwaps[$sSwapRequest];
+		$sContent = file_get_contents($aSwap["target"]);
+
+		echo $sContent;
 	}
 ?>
