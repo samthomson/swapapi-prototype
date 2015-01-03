@@ -1,0 +1,11 @@
+Options +FollowSymLinks -MultiViews -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{DOCUMENT_ROOT}/$1 -f
+RewriteRule ^(.*)$ $1 [L]
+
+RewriteCond %{THE_REQUEST} \s/ [NC,OR]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ handler.php [L,QSA]
