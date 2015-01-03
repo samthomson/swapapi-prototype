@@ -7,6 +7,7 @@
 	//print_r($saSwaps);
 
 	if(isset($saSwaps[$sSwapRequest])){
-		echo "retrieve ".$saSwaps[$sSwapRequest];
+		//echo "retrieve ".$saSwaps[$sSwapRequest];
+		echo file_get_contents($saSwaps[$sSwapRequest]);
 	}
 ?>
